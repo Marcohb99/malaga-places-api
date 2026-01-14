@@ -1,9 +1,11 @@
-import { Injectable } from '@nestjs/common';
-import type { RehearsalRoomRepository } from '../../Domain/Repositories/RehearsalRoomRepository';
+import { Inject, Injectable } from '@nestjs/common';
+import { RehearsalRoomRepository } from 'src/Domain/Repositories/RehearsalRoomRepository';
 
 @Injectable()
 export class GetRehearsalRoomsUseCase {
-  constructor(private readonly rehearsalRoomRepository: RehearsalRoomRepository) {}
+  constructor(
+    @Inject(RehearsalRoomRepository) private readonly rehearsalRoomRepository: RehearsalRoomRepository
+  ) {}
 
   async execute() {
     return this.rehearsalRoomRepository.findAll();

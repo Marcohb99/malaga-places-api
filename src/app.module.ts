@@ -1,6 +1,11 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { RehearsalRoomRepository } from './Domain/Repositories/RehearsalRoomRepository';
+import { RehearsalRoomTypeOrmRepository } from './Infrastructure/Persistence/Repositories/RehearsalRoomTypeOrmRepository';
+import { RehearsalRoomModel } from './Infrastructure/Persistence/Models/RehearsalRoom.model';
+import { ListRehearsalRoomsController } from './Infrastructure/Controllers/list-rehearsal-rooms.controller';
+import { GetRehearsalRoomsUseCase } from './Application/UseCases/GetRehearsalRooms';
 
 @Module({
   imports: [
@@ -19,7 +24,15 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       }),
       inject: [ConfigService],
     }),
-    // ... other modules
+    TypeOrmModule.forFeature([RehearsalRoomModel]),
   ],
+  providers: [
+    GetRehearsalRoomsUseCase,
+    {
+      provide: RehearsalRoomRepository, // Used as a symbol
+      useClass: RehearsalRoomTypeOrmRepository
+    }
+  ],
+  controllers: [ListRehearsalRoomsController]
 })
 export class AppModule {}
