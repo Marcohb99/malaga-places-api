@@ -31,7 +31,7 @@ pipeline {
 
     stage('Test') {
       steps {
-        sh 'npm test'
+        sh 'npm run test:cov'
       }
     }
 
@@ -44,7 +44,6 @@ pipeline {
 
   post {
     always {
-      junit 'coverage/junit-*.xml' // optional, if you later output JUnit reports
       archiveArtifacts artifacts: 'coverage/**', fingerprint: true, onlyIfSuccessful: true
     }
   }
