@@ -8,13 +8,21 @@ describe('Coordinate', () => {
   });
 
   it('throws when latitude is out of range', () => {
-    expect(() => new Coordinate(91, 0)).toThrow('Latitude must be between -90 and 90.');
-    expect(() => new Coordinate(-91, 0)).toThrow('Latitude must be between -90 and 90.');
+    expect(() => new Coordinate(91, 0)).toThrow(
+      'Latitude must be between -90 and 90.',
+    );
+    expect(() => new Coordinate(-91, 0)).toThrow(
+      'Latitude must be between -90 and 90.',
+    );
   });
 
   it('throws when longitude is out of range', () => {
-    expect(() => new Coordinate(0, 181)).toThrow('Longitude must be between -180 and 180.');
-    expect(() => new Coordinate(0, -181)).toThrow('Longitude must be between -180 and 180.');
+    expect(() => new Coordinate(0, 181)).toThrow(
+      'Longitude must be between -180 and 180.',
+    );
+    expect(() => new Coordinate(0, -181)).toThrow(
+      'Longitude must be between -180 and 180.',
+    );
   });
 
   it('distanceTo returns euclidean distance', () => {

@@ -22,7 +22,9 @@ describe('CreateRehearsalRoomController', () => {
       ],
     }).compile();
 
-    controller = module.get<CreateRehearsalRoomController>(CreateRehearsalRoomController);
+    controller = module.get<CreateRehearsalRoomController>(
+      CreateRehearsalRoomController,
+    );
   });
 
   it('should be defined', () => {
@@ -30,7 +32,10 @@ describe('CreateRehearsalRoomController', () => {
   });
 
   it('should call the use case with the dto and return void', async () => {
-    const dto = new RehearsalRoomDto('1', 'Room A', 'Málaga', { lat: 36.7, lng: -4.4 });
+    const dto = new RehearsalRoomDto('1', 'Room A', 'Málaga', {
+      lat: 36.7,
+      lng: -4.4,
+    });
     mockCreateRehearsalRoom.execute.mockResolvedValue(undefined as any);
 
     await expect(controller.create(dto)).resolves.toBeUndefined();

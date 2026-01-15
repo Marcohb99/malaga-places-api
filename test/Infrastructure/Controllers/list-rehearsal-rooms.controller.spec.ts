@@ -24,7 +24,9 @@ describe('ListRehearsalRoomsController', () => {
       ],
     }).compile();
 
-    controller = module.get<ListRehearsalRoomsController>(ListRehearsalRoomsController);
+    controller = module.get<ListRehearsalRoomsController>(
+      ListRehearsalRoomsController,
+    );
   });
 
   it('should be defined', () => {
@@ -34,18 +36,8 @@ describe('ListRehearsalRoomsController', () => {
   it('should return an array of rehearsal rooms', async () => {
     // Arrange
     const mockRooms: RehearsalRoom[] = [
-      new RehearsalRoom(
-        '1',
-        'Room A',
-        'Málaga',
-        new Coordinate(-1, 1),
-      ),
-      new RehearsalRoom(
-        '2',
-        'Room B',
-        'Barcelona',
-        new Coordinate(2, 2),
-      ),
+      new RehearsalRoom('1', 'Room A', 'Málaga', new Coordinate(-1, 1)),
+      new RehearsalRoom('2', 'Room B', 'Barcelona', new Coordinate(2, 2)),
     ];
     mockListRehearsalRooms.execute.mockResolvedValue(mockRooms);
 

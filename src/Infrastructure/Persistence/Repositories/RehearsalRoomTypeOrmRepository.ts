@@ -28,7 +28,9 @@ export class RehearsalRoomTypeOrmRepository implements RehearsalRoomRepository {
   }
 
   async findById(id: string): Promise<RehearsalRoom | null> {
-    const model = await this.rehearsalRoomModelRepository.findOne({ where: { id } });
+    const model = await this.rehearsalRoomModelRepository.findOne({
+      where: { id },
+    });
     if (!model) return null;
     return new RehearsalRoom(
       model.id,

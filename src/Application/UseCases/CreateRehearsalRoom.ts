@@ -7,7 +7,8 @@ import { RehearsalRoomDto } from 'src/Infrastructure/DTO/RehearsalRoomDTO';
 @Injectable()
 export class CreateRehearsalRoom {
   constructor(
-    @Inject(RehearsalRoomRepository) private readonly rehearsalRoomRepository: RehearsalRoomRepository
+    @Inject(RehearsalRoomRepository)
+    private readonly rehearsalRoomRepository: RehearsalRoomRepository,
   ) {}
 
   async execute(rehearsalRoomDto: RehearsalRoomDto) {
@@ -15,7 +16,10 @@ export class CreateRehearsalRoom {
       rehearsalRoomDto.id,
       rehearsalRoomDto.name,
       rehearsalRoomDto.city,
-      new Coordinate(rehearsalRoomDto.coordinates.lat, rehearsalRoomDto.coordinates.lng),
+      new Coordinate(
+        rehearsalRoomDto.coordinates.lat,
+        rehearsalRoomDto.coordinates.lng,
+      ),
     );
     return this.rehearsalRoomRepository.save(rehearsalRoom);
   }

@@ -5,10 +5,7 @@ import { CreateRehearsalRoom } from './UseCases/CreateRehearsalRoom';
 
 @Module({
   imports: [], // No Infrastructure imports - only Domain interfaces
-  providers: [
-    ListRehearsalRooms,
-    CreateRehearsalRoom
-  ],
+  providers: [ListRehearsalRooms, CreateRehearsalRoom],
   exports: [ListRehearsalRooms, CreateRehearsalRoom],
 })
 export class ApplicationModule {}

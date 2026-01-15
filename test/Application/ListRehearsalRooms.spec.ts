@@ -15,7 +15,12 @@ describe('ListRehearsalRooms', () => {
     const repo = makeRepo();
     const rooms = [
       new RehearsalRoom('id-1', 'Room A', 'Malaga', new Coordinate(36.7, -4.4)),
-      new RehearsalRoom('id-2', 'Room B', 'Malaga', new Coordinate(36.71, -4.41)),
+      new RehearsalRoom(
+        'id-2',
+        'Room B',
+        'Malaga',
+        new Coordinate(36.71, -4.41),
+      ),
     ];
     repo.findAll.mockResolvedValue(rooms);
 

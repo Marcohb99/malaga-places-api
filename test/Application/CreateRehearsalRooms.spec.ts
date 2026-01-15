@@ -16,7 +16,10 @@ describe('CreateRehearsalRoom', () => {
     const repo = makeRepo();
     const sut = new CreateRehearsalRoom(repo);
 
-    const dto = new RehearsalRoomDto('id-1', 'Room A', 'Malaga', { lat: 36.7213, lng: -4.4214 });
+    const dto = new RehearsalRoomDto('id-1', 'Room A', 'Malaga', {
+      lat: 36.7213,
+      lng: -4.4214,
+    });
 
     await sut.execute(dto);
 

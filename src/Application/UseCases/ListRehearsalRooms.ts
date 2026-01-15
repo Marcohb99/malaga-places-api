@@ -4,7 +4,8 @@ import { RehearsalRoomRepository } from 'src/Domain/Repositories/RehearsalRoomRe
 @Injectable()
 export class ListRehearsalRooms {
   constructor(
-    @Inject(RehearsalRoomRepository) private readonly rehearsalRoomRepository: RehearsalRoomRepository
+    @Inject(RehearsalRoomRepository)
+    private readonly rehearsalRoomRepository: RehearsalRoomRepository,
   ) {}
 
   async execute() {

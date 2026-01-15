@@ -33,12 +33,9 @@ import { CreateRehearsalRoomController } from './Infrastructure/Controllers/crea
     CreateRehearsalRoom,
     {
       provide: RehearsalRoomRepository, // Used as a symbol
-      useClass: RehearsalRoomTypeOrmRepository
-    }
+      useClass: RehearsalRoomTypeOrmRepository,
+    },
   ],
-  controllers: [
-    ListRehearsalRoomsController,
-    CreateRehearsalRoomController
-  ]
+  controllers: [ListRehearsalRoomsController, CreateRehearsalRoomController],
 })
 export class AppModule {}
