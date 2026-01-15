@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { RehearsalRoomRepository } from 'src/Domain/Repositories/RehearsalRoomRepository';
 
 @Injectable()
-export class GetRehearsalRoomsUseCase {
+export class ListRehearsalRooms {
   constructor(
     @Inject(RehearsalRoomRepository) private readonly rehearsalRoomRepository: RehearsalRoomRepository
   ) {}

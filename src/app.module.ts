@@ -5,7 +5,9 @@ import { RehearsalRoomRepository } from './Domain/Repositories/RehearsalRoomRepo
 import { RehearsalRoomTypeOrmRepository } from './Infrastructure/Persistence/Repositories/RehearsalRoomTypeOrmRepository';
 import { RehearsalRoomModel } from './Infrastructure/Persistence/Models/RehearsalRoom.model';
 import { ListRehearsalRoomsController } from './Infrastructure/Controllers/list-rehearsal-rooms.controller';
-import { GetRehearsalRoomsUseCase } from './Application/UseCases/GetRehearsalRooms';
+import { ListRehearsalRooms } from './Application/UseCases/ListRehearsalRooms';
+import { CreateRehearsalRoom } from './Application/UseCases/CreateRehearsalRoom';
+import { CreateRehearsalRoomController } from './Infrastructure/Controllers/create-rehearsal-rooms.controller';
 
 @Module({
   imports: [
@@ -27,12 +29,16 @@ import { GetRehearsalRoomsUseCase } from './Application/UseCases/GetRehearsalRoo
     TypeOrmModule.forFeature([RehearsalRoomModel]),
   ],
   providers: [
-    GetRehearsalRoomsUseCase,
+    ListRehearsalRooms,
+    CreateRehearsalRoom,
     {
       provide: RehearsalRoomRepository, // Used as a symbol
       useClass: RehearsalRoomTypeOrmRepository
     }
   ],
-  controllers: [ListRehearsalRoomsController]
+  controllers: [
+    ListRehearsalRoomsController,
+    CreateRehearsalRoomController
+  ]
 })
 export class AppModule {}

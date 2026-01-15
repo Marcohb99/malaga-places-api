@@ -1,26 +1,25 @@
-// test/unit/infrastructure/controllers/list-rehearsal-rooms.controller.spec.ts
 import { Test, TestingModule } from '@nestjs/testing';
 import { ListRehearsalRoomsController } from 'src/Infrastructure/Controllers/list-rehearsal-rooms.controller';
-import { GetRehearsalRoomsUseCase } from 'src/Application/UseCases/GetRehearsalRooms';
+import { ListRehearsalRooms } from 'src/Application/UseCases/ListRehearsalRooms';
 import { RehearsalRoom } from 'src/Domain/Models/RehearsalRoom';
 import { Coordinate } from 'src/Domain/ValueObjects/Coordinates';
 
 describe('ListRehearsalRoomsController', () => {
   let controller: ListRehearsalRoomsController;
-  let mockGetRehearsalRoomsUseCase: jest.Mocked<GetRehearsalRoomsUseCase>;
+  let mockListRehearsalRooms: jest.Mocked<ListRehearsalRooms>;
 
   beforeEach(async () => {
     // Mock the use case
-    mockGetRehearsalRoomsUseCase = {
+    mockListRehearsalRooms = {
       execute: jest.fn(),
-    } as unknown as jest.Mocked<GetRehearsalRoomsUseCase>;
+    } as unknown as jest.Mocked<ListRehearsalRooms>;
 
     const module: TestingModule = await Test.createTestingModule({
       controllers: [ListRehearsalRoomsController],
       providers: [
         {
-          provide: GetRehearsalRoomsUseCase,
-          useValue: mockGetRehearsalRoomsUseCase,
+          provide: ListRehearsalRooms,
+          useValue: mockListRehearsalRooms,
         },
       ],
     }).compile();
@@ -48,13 +47,13 @@ describe('ListRehearsalRoomsController', () => {
         new Coordinate(2, 2),
       ),
     ];
-    mockGetRehearsalRoomsUseCase.execute.mockResolvedValue(mockRooms);
+    mockListRehearsalRooms.execute.mockResolvedValue(mockRooms);
 
     // Act
     const result = await controller.getAll();
 
     // Assert
-    expect(mockGetRehearsalRoomsUseCase.execute).toHaveBeenCalledTimes(1);
+    expect(mockListRehearsalRooms.execute).toHaveBeenCalledTimes(1);
     expect(result).toEqual(mockRooms);
   });
 });

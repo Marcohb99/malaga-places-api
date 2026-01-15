@@ -1,10 +1,10 @@
 import { RehearsalRoom } from "src/Domain/Models/RehearsalRoom";
 import { Coordinate } from "src/Domain/ValueObjects/Coordinates";
-import { v4 as uuidv4 } from 'uuid';
+import { randomUUID } from 'node:crypto';
 
 describe('RehearsalRoomTest', () => {
     it('Should create', () => {
-        const id = uuidv4();
+        const id = randomUUID();
         const sut = new RehearsalRoom(
             id,
             'test',

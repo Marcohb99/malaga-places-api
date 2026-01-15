@@ -1,10 +1,14 @@
 // src/Application/application.module.ts
 import { Module } from '@nestjs/common';
-import { GetRehearsalRoomsUseCase } from './UseCases/GetRehearsalRooms';
+import { ListRehearsalRooms } from './UseCases/ListRehearsalRooms';
+import { CreateRehearsalRoom } from './UseCases/CreateRehearsalRoom';
 
 @Module({
   imports: [], // No Infrastructure imports - only Domain interfaces
-  providers: [GetRehearsalRoomsUseCase],
-  exports: [GetRehearsalRoomsUseCase],
+  providers: [
+    ListRehearsalRooms,
+    CreateRehearsalRoom
+  ],
+  exports: [ListRehearsalRooms, CreateRehearsalRoom],
 })
 export class ApplicationModule {}
