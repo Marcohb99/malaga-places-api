@@ -1,4 +1,3 @@
-// src/domain/Models/RehearsalRoom.ts
 import { Coordinate } from '../ValueObjects/Coordinates';
 
 export class RehearsalRoom {

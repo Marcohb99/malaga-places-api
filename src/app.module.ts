@@ -10,6 +10,8 @@ import { CreateRehearsalRoom } from './Application/UseCases/CreateRehearsalRoom'
 import { CreateRehearsalRoomController } from './Infrastructure/Controllers/create-rehearsal-rooms.controller';
 import { UpdateRehearsalRoom } from './Application/UseCases/UpdateRehearsalRoom';
 import { UpdateRehearsalRoomController } from './Infrastructure/Controllers/update-rehearsal-rooms.controller';
+import { DeleteRehearsalRoom } from 'src/Application/UseCases/DeleteRehearsalRoom';
+import { DeleteRehearsalRoomController } from 'src/Infrastructure/Controllers/delete-rehearsal-rooms.controller';
 
 @Module({
   imports: [
@@ -34,6 +36,7 @@ import { UpdateRehearsalRoomController } from './Infrastructure/Controllers/upda
     ListRehearsalRooms,
     CreateRehearsalRoom,
     UpdateRehearsalRoom,
+    DeleteRehearsalRoom,
     {
       provide: RehearsalRoomRepository, // Used as a symbol
       useClass: RehearsalRoomTypeOrmRepository,
@@ -43,6 +46,7 @@ import { UpdateRehearsalRoomController } from './Infrastructure/Controllers/upda
     ListRehearsalRoomsController,
     CreateRehearsalRoomController,
     UpdateRehearsalRoomController,
+    DeleteRehearsalRoomController,
   ],
 })
 export class AppModule {}
