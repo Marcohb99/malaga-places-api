@@ -13,9 +13,7 @@ export class DeleteRehearsalRoom {
       await this.rehearsalRoomRepository.findById(id);
 
     if (!existingRehearsalRoom) {
-      throw new NotFoundException(
-        `Rehearsal room with id ${id} not found`,
-      );
+      throw new NotFoundException(`Rehearsal room with id ${id} not found`);
     }
 
     return this.rehearsalRoomRepository.delete(id);
